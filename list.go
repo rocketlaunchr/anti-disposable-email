@@ -3,7 +3,7 @@
 package disposable
 
 // DisposableList is the list of domains that are considered to be
-// from disposable email service providers. See: https://github.com/martenson/disposable-email-domains
+// from disposable email service providers. See: https://github.com/martenson/disposable-email-domains.
 //
 // NOTE: To update the list, refer to the 'update' sub-package.
 var DisposableList = map[string]struct{}{

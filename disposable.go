@@ -16,6 +16,7 @@ var ErrInvalidEmail = errors.New("invalid email")
 // An email address is made up of 3 components: <local-part>@<domain>.
 // The local-part is case-sensitive according to the specs, but most
 // (if not all) reputable email services will treat it as case-insensitive.
+// The domain is case-insensitive.
 type ParsedEmail struct {
 	// Email represents the input email (after white-space has been trimmed).
 	Email string
@@ -46,8 +47,11 @@ type ParsedEmail struct {
 	Disposable bool
 
 	// Domain represents the component after the '@' character.
-	// It is lower-cased since it's not case-sensitive.
+	// It is lower-cased since it's case-insensitive.
 	Domain string
+
+	// LocalPart represents the component before the '@' character.
+	LocalPart string
 }
 
 // ParseEmail parses a given email address. Set caseSensitive to true if you want the local-part
@@ -82,14 +86,16 @@ func ParseEmail(email string, caseSensitive ...bool) (ParsedEmail, error) {
 	}
 
 	domain := toLower(splits[1])
+	localPart := splits[0]
 
 	p := ParsedEmail{
-		Email:  email,
-		Domain: domain,
+		Email:     email,
+		Domain:    domain,
+		LocalPart: localPart,
 	}
 
 	// Normalize local part
-	p.Normalized, p.Preferred, p.Extra = normalize(splits[0], domain, cs)
+	p.Normalized, p.Preferred, p.Extra = normalize(localPart, domain, cs)
 
 	// Check if domain is disposable
 	_, p.Disposable = DisposableList[domain]
