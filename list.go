@@ -1,3 +1,5 @@
+// Copyright 2020 PJ Engineering and Business Solutions Pty. Ltd. All rights reserved.
+
 package disposable
 
 // DisposableList is the list of domains that are considered to be

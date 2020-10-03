@@ -1,3 +1,5 @@
+// Copyright 2020 PJ Engineering and Business Solutions Pty. Ltd. All rights reserved.
+
 package disposable
 
 import (
@@ -15,7 +17,6 @@ var ErrInvalidEmail = errors.New("invalid email")
 // The local-part is case-sensitive according to the specs, but most
 // (if not all) reputable email services will treat it as case-insensitive.
 type ParsedEmail struct {
-
 	// Email represents the input email (after white-space has been trimmed).
 	Email string
 
@@ -50,7 +51,7 @@ type ParsedEmail struct {
 }
 
 // ParseEmail parses a given email address. Set caseSensitive to true if you want the local-part
-// to be considered case-sensitive. The default is false. Basic email validation is performed but
+// to be considered case-sensitive. The default value is false. Basic email validation is performed but
 // it is not comprehensively checked.
 //
 // See https://github.com/badoux/checkmail for a more robust validation solution.

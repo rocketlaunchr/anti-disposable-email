@@ -1,3 +1,5 @@
+// Copyright 2020 PJ Engineering and Business Solutions Pty. Ltd. All rights reserved.
+
 package update
 
 import (
