@@ -88,6 +88,10 @@ func ParseEmail(email string, caseSensitive ...bool) (ParsedEmail, error) {
 	domain := toLower(splits[1])
 	localPart := splits[0]
 
+	if !ValidateDomain(domain) {
+		return ParsedEmail{Email: email}, ErrInvalidEmail
+	}
+
 	p := ParsedEmail{
 		Email:     email,
 		Domain:    domain,
@@ -135,4 +139,47 @@ func toLower(s string) (ret string) {
 		ret += string(unicode.ToLower(r))
 	}
 	return
+}
+
+// ValidateDomain returns true if the domain component of an email address is valid.
+// domain must be already lower-case and white-space trimmed. This function only performs a basic check and is not
+// authoritative.
+func ValidateDomain(domain string) bool {
+	if domain == "" {
+		return false
+	}
+
+	// Check if first or last character is . or dash
+	if strings.HasPrefix(domain, ".") || strings.HasPrefix(domain, "-") || strings.HasSuffix(domain, ".") || strings.HasSuffix(domain, "-") {
+		return false
+	}
+
+	// Check if only a-z, 0-9, -, . and _ are found.
+	for _, r := range domain {
+		switch r {
+		case '0', '1', '2', '3', '4', '5', '6', '7', '8', '9':
+
+		case '-', '.', '_':
+
+		case ' ':
+			return false
+		default:
+			if unicode.IsSpace(r) {
+				return false
+			} else if 'a' <= r && r <= 'z' {
+
+			} else {
+				return false
+			}
+		}
+
+	}
+
+	// Check number of characters after final dot is at least 2
+	splits := strings.Split(domain, ".")
+	if len(splits) > 1 && len(splits[len(splits)-1]) < 2 {
+		return false
+	}
+
+	return true
 }
