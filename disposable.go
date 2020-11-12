@@ -4,6 +4,7 @@ package disposable
 
 import (
 	"errors"
+	"golang.org/x/net/idna"
 	"strings"
 	"unicode"
 )
@@ -88,6 +89,11 @@ func ParseEmail(email string, caseSensitive ...bool) (ParsedEmail, error) {
 	domain := toLower(splits[1])
 	localPart := splits[0]
 
+	domain, err := idna.ToASCII(domain)
+	if err != nil {
+		return ParsedEmail{Email: email}, ErrInvalidEmail
+	}
+
 	if !ValidateDomain(domain) {
 		return ParsedEmail{Email: email}, ErrInvalidEmail
 	}
@@ -143,7 +149,8 @@ func toLower(s string) (ret string) {
 
 // ValidateDomain returns true if the domain component of an email address is valid.
 // domain must be already lower-case and white-space trimmed. This function only performs a basic check and is not
-// authoritative.
+// authoritative. For domains containing unicode characters, you must perform punycode conversion beforehand.
+// See: https://godoc.org/golang.org/x/net/idna#ToASCII
 func ValidateDomain(domain string) bool {
 	if domain == "" {
 		return false
