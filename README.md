@@ -14,7 +14,7 @@
 
 # Anti Disposable Email Address Checker for Go
 
-If you want to detect if new accounts are using disposable email addresses, then this is your package.
+If you want to detect if new accounts are using disposable email services, then this is your package.
 
 
 
@@ -53,11 +53,11 @@ ParsedEmail, _ := disposable.ParseEmail("rocketlaunchr.cloud@gmail.com")
 
 ```
 
-If `Disposable` is **true**, then the email address is from a disposable email address.
+If `Disposable` is **true**, then the email address is from a disposable email service.
 
 ### Normalized
 
-If you want to block duplicate email addresses from your database, then store as a unique-key the `Normalized`data. See [docs](https://pkg.go.dev/github.com/rocketlaunchr/anti-disposable-email).
+If you want to block duplicate email addresses from your database, then store as a unique-key the `Normalized` data. See [docs](https://pkg.go.dev/github.com/rocketlaunchr/anti-disposable-email#ParsedEmail).
 
 ### Update
 
