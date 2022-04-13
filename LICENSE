@@ -1,6 +1,6 @@
-MIT License
+mMIT License
 
-Copyright (c) 2020 PJ Engineering and Business Solutions Pty. Ltd.
+Copyright (c) 2020-2022 PJ Engineering and Business Solutions Pty. Ltd.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -19,3 +19,10 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+
+The usage of this software must not be knowingly used for an application 
+that will be directly or indirectly used for military purposes.
+
+All forks of this package must be subject to the above provisions.
+This only applies to the fork itself and NOT the product(s) derived from this package
+or a fork of this package.
