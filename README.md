@@ -14,9 +14,9 @@
 
 # Anti Disposable Email Address Checker for Go
 
-If you want to detect if new accounts are using disposable email services, then this is your package.
+If you want to detect if new account registrations are using disposable email services, then this is your package.
 
-
+**Ultimately this is a business decision.**
 
 ## Installation
 
@@ -61,7 +61,7 @@ If you want to block duplicate email addresses from your database, then store as
 
 ### Update
 
-This package can auto-update the disposable domain list. It uses the regularly updated list from here: https://github.com/disposable-email-domains/disposable-email-domains.
+This package can auto-update the disposable domain list. It uses the regularly updated list from [disposable-email-domains](https://github.com/disposable-email-domains/disposable-email-domains).
 
 ```go
 import "github.com/rocketlaunchr/anti-disposable-email"
@@ -91,4 +91,4 @@ update.Update(ctx, &disposable.DisposableList)
 
 The license is a modified MIT license. Refer to `LICENSE` file for more details.
 
-**© 2022 PJ Engineering and Business Solutions Pty. Ltd.**
+**© 2020-22 PJ Engineering and Business Solutions Pty. Ltd.**
