@@ -1,4 +1,4 @@
-// Copyright 2020-22 PJ Engineering and Business Solutions Pty. Ltd. All rights reserved.
+// Copyright 2020-24 PJ Engineering and Business Solutions Pty. Ltd. All rights reserved.
 
 package update
 
@@ -19,7 +19,7 @@ func Update(ctx context.Context, list *map[string]struct{}, lock ...sync.Locker)
 	fs := memfs.New()
 
 	opts := &git.CloneOptions{
-		URL:   "https://github.com/martenson/disposable-email-domains",
+		URL:   "https://github.com/disposable-email-domains/disposable-email-domains",
 		Depth: 0,
 	}
 
